@@ -3,14 +3,22 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Home = () => {
 
-  const {store, dispatch} =useGlobalReducer()
+	const { store, dispatch } = useGlobalReducer()
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
+		<div id="principal">
+			<div id="contactUser">
+				<div className="Container">
+					<div className="avatar"><i class="fa-solid fa-circle-user fa-2xl"></i></div>
+					<div className="contactName">Carlos</div>
+					<div className="userMail"><i class="fa-solid fa-envelope"></i> Mail</div>
+					<div className="userPhone"><i class="fa-solid fa-phone"> 665665656</i></div>
+				</div>
+				<div>
+					<div className="modify"><i class="fa-solid fa-pencil"></i></div>
+					<div className="delete"><i class="fa-solid fa-trash"></i></div>
+				</div>
+			</div>
 		</div>
 	);
 }; 
