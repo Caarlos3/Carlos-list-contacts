@@ -1,30 +1,32 @@
 export const initialAgenda = () => {
   return {
     contacts: []
-  }
-}
+  };
+};
 
 
 
-export default function contactsThing(state, action = {}) {
+export default function contactsThing(state = initialAgenda(), action = {}) {
 
-  switch (action.type){
-    case "ADD_AGENDA":
-      return action.payload;
-      
+  switch (action.type){   
     case "ADD_CONTACT_USER":
-      return [...state, action.payload];
+      return {...state, contacts: action.payload};
     
     case "EDIT_CONTACT_USER":
-      return state.map(contacts => contacts.id === action.payload.id ? action.payload : contacts);
+      return {...state, contacts: state.contacts.map(contacts => contacts.id === action.payload.id ? action.payload : contacts)};
 
     case "DELETE_CONTACT_USER":
-      return state.filter(contacts => contacts.id !== action.payload);
+      return {...state, contacts: state.contacts.filter(contacts => contacts.id !== action.payload)};
 
     default:
     return state;
   }
 };
+
+export const ADD_CONTACT_USER = "ADD_CONTACT_USER";
+export const EDIT_CONTACT_USER = "EDIT_CONTACT_USER";
+export const DELETE_CONTACT_USER = "DELETE_CONTACT_USER";
+
 
 
 
