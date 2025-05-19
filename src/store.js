@@ -1,6 +1,7 @@
 export const initialAgenda = () => {
   return {
-    contacts: []
+    contacts: [],
+    contact: {}
   };
 };
 
@@ -8,7 +9,9 @@ export const initialAgenda = () => {
 
 export default function contactsThing(state = initialAgenda(), action = {}) {
 
-  switch (action.type){   
+  switch (action.type){
+    case "CONTACT":
+      return {...state, contacts: [...state.contacts, action.payload]}   
     case "ADD_CONTACT_USER":
       return {...state, contacts: action.payload};
     
@@ -17,6 +20,9 @@ export default function contactsThing(state = initialAgenda(), action = {}) {
 
     case "DELETE_CONTACT_USER":
       return {...state, contacts: state.contacts.filter(contacts => contacts.id !== action.payload)};
+    
+    case "CATCH_CONTACT":
+      return {...state, contact: action.payload};
 
     default:
     return state;

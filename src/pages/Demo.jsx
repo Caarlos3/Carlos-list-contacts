@@ -41,7 +41,7 @@ export const Demo = () => {
     if(!contactResponse.ok) throw new Error("Error al crear nuevo contacto");
 
     const createdContact = await contactResponse.json();
-    dispatch({type: ADD_CONTACT_USER, payload: createdContact});
+    dispatch({type: "CONTACT", payload: createdContact});
     navigate("/");    
   }
 
