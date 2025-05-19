@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import { ADD_CONTACT_USER, DELETE_CONTACT_USER} from "../store.js";
+import { ADD_CONTACT_USER, DELETE_CONTACT_USER, } from "../store.js";
 import { useNavigate } from "react-router-dom";
+import { EDIT_CONTACT_USER } from "../store.js";
 
 
 export const Home = () => {
@@ -32,7 +33,7 @@ export const Home = () => {
 		}
 		)
 		dispatch({type: EDIT_CONTACT_USER, payload: contact.id })
-		navigate("/edit")
+		navigate("/edit", {state: contact})
 	}
 
 	const deleteContact = async (contact) => {
@@ -58,9 +59,9 @@ export const Home = () => {
 						<div className="container">
 							<div className="avatar"><i className="fa-solid fa-circle-user fa-2xl"></i></div>
 							<div className="userName">{contact.name}</div>
-							<div className="userMail"><i className="fa-solid fa-envelope"></i>{contact.email}</div>
+							<div className="userMail"><i className="fa-solid fa-envelope"></i> {contact.email}</div>
 							<div className="userPhone"><i className="fa-solid fa-phone"> {contact.phone}</i></div>
-							<div className="userAddress">{contact.address}</div>
+							<div className="userAddress"><i className="fa-solid fa-location-dot"></i> {contact.address}</div>
 						</div>
 						<div>
 							<div className="modify" onClick={()=>changeContact(contact)}><i className="fa-solid fa-pencil"></i></div>
@@ -75,3 +76,4 @@ export const Home = () => {
 		
 	);
 }; 
+
